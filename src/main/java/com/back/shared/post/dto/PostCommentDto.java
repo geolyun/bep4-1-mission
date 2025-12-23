@@ -22,7 +22,7 @@ public class PostCommentDto {
                 post.getId(),
                 post.getCreateDate(),
                 post.getModifyDate(),
-                post.getId(),
+                post.getPost().getId(),
                 post.getAuthor().getId(),
                 post.getAuthor().getNickname(),
                 post.getContent()
