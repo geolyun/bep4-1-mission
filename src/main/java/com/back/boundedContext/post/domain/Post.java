@@ -1,8 +1,9 @@
-package com.back.boundedContext.post.entity;
+package com.back.boundedContext.post.domain;
 
-import com.back.boundedContext.member.entity.Member;
+import com.back.boundedContext.member.domain.Member;
 import com.back.global.jpa.entity.BaseIdAndTime;
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 @NoArgsConstructor
+@Getter
 public class Post extends BaseIdAndTime {
     @ManyToOne(fetch = LAZY)
     private Member author;
@@ -19,7 +21,7 @@ public class Post extends BaseIdAndTime {
     @Column(columnDefinition = "LONGTEXT")
     private String content;
     @OneToMany(mappedBy = "post", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
-    private List<com.back.boundedContext.post.entity.PostComment> comments = new ArrayList<>();
+    private List<PostComment> comments = new ArrayList<>();
 
     public Post(Member author, String title, String content) {
         this.author = author;
@@ -27,8 +29,8 @@ public class Post extends BaseIdAndTime {
         this.content = content;
     }
 
-    public com.back.boundedContext.post.entity.PostComment addComment(Member author, String content) {
-        com.back.boundedContext.post.entity.PostComment postComment = new com.back.boundedContext.post.entity.PostComment(this, author, content);
+    public PostComment addComment(Member author, String content) {
+        PostComment postComment = new PostComment(this, author, content);
 
         comments.add(postComment);
 
