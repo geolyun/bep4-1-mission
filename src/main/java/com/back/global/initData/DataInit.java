@@ -1,4 +1,4 @@
-package com.back.initData;
+package com.back.global.initData;
 
 import com.back.entity.Member;
 import com.back.entity.Post;

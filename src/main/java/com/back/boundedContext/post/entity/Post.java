@@ -1,6 +1,7 @@
-package com.back.entity;
+package com.back.boundedContext.post.entity;
 
-import com.back.jpa.entity.BaseIdAndTime;
+import com.back.boundedContext.member.entity.Member;
+import com.back.global.jpa.entity.BaseIdAndTime;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
@@ -18,7 +19,7 @@ public class Post extends BaseIdAndTime {
     @Column(columnDefinition = "LONGTEXT")
     private String content;
     @OneToMany(mappedBy = "post", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
-    private List<PostComment> comments = new ArrayList<>();
+    private List<com.back.boundedContext.post.entity.PostComment> comments = new ArrayList<>();
 
     public Post(Member author, String title, String content) {
         this.author = author;
@@ -26,8 +27,8 @@ public class Post extends BaseIdAndTime {
         this.content = content;
     }
 
-    public PostComment addComment(Member author, String content) {
-        PostComment postComment = new PostComment(this, author, content);
+    public com.back.boundedContext.post.entity.PostComment addComment(Member author, String content) {
+        com.back.boundedContext.post.entity.PostComment postComment = new com.back.boundedContext.post.entity.PostComment(this, author, content);
 
         comments.add(postComment);
 
