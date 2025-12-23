@@ -12,11 +12,16 @@ public class Member extends BaseIdAndTime {
     private String username;
     private String password;
     private String nickname;
+    private int activityPoint;
 
     public Member(String username, String password, String nickname) {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
+    }
+
+    public int increaseActivityPoint(int amount) {
+        return this.activityPoint += amount;
     }
 }
 
