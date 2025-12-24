@@ -16,7 +16,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @Getter
-public class BaseIdAndTime extends com.back.global.jpa.entity.BaseEntity {
+public abstract class BaseIdAndTime extends com.back.global.jpa.entity.BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private int id;
