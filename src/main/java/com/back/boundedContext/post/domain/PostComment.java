@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "POST_POST_COMMENT")
 @NoArgsConstructor
 @Getter
 public class PostComment extends BaseIdAndTime {
