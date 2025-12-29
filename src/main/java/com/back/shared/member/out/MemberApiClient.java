@@ -1,6 +1,6 @@
 package com.back.shared.member.out;
 
-import lombok.Value;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -10,11 +10,11 @@ public class MemberApiClient {
 
     public MemberApiClient(@Value("${custom.global.internalBackUrl}") String internalBackUrl) {
         this.restClient = RestClient.builder()
-                .baseUrl(internalBackUrl + "/api/v1/member")
+                .baseUrl(internalBackUrl + "/member/api/v1")
                 .build();
     }
 
-    public static String getRandomTip() {
+    public String getRandomTip() {
         return restClient.get()
                 .uri("/members/randomSecureTip")
                 .retrieve()
