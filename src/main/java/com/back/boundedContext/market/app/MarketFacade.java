@@ -1,13 +1,9 @@
 package com.back.boundedContext.market.app;
 
-import com.back.boundedContext.cash.app.CashCreateWalletUseCase;
-import com.back.boundedContext.cash.app.CashSupport;
-import com.back.boundedContext.cash.app.CashSyncMemberUseCase;
-import com.back.boundedContext.cash.domain.CashMember;
 import com.back.boundedContext.market.domain.Cart;
 import com.back.boundedContext.market.domain.MarketMember;
+import com.back.boundedContext.market.domain.Order;
 import com.back.boundedContext.market.domain.Product;
-import com.back.boundedContext.market.out.MarketMemberRepository;
 import com.back.global.rsData.RsData;
 import com.back.shared.market.dto.MarketMemberDto;
 import com.back.shared.member.dto.MemberDto;
@@ -25,6 +21,7 @@ public class MarketFacade {
     private final MarketSyncMemberUseCase marketSyncMemberUseCase;
     private final MarketCreateProductUseCase marketCreateProductUseCase;
     private final MarketCreateCartUseCase marketCreateCartUseCase;
+    private final MarketCreateOrderUseCase marketCreateOrderUseCase;
 
     @Transactional
     public MarketMember syncMember(MemberDto member) {
@@ -43,8 +40,8 @@ public class MarketFacade {
             int sourceId,
             String name,
             String description,
-            int price,
-            int salePrice
+            long price,
+            long salePrice
     ) {
         return marketCreateProductUseCase.createProduct(
                 seller,
@@ -75,6 +72,16 @@ public class MarketFacade {
     @Transactional(readOnly = true)
     public Optional<Product> findProductById(int id) {
         return marketSupport.findProductById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public long ordersCount() {
+        return marketSupport.countOrders();
+    }
+
+    @Transactional
+    public RsData<Order> createOrder(Cart cart) {
+        return marketCreateOrderUseCase.createOrder(cart);
     }
 }
 
