@@ -18,7 +18,7 @@ import static jakarta.persistence.FetchType.LAZY;
 @NoArgsConstructor
 @Getter
 public class Post extends BaseIdAndTime {
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = LAZY) // 한 사람이 많은 포스트를 작성할 수 있기 때문에 @ManyToOne 
     private PostMember author;
     private String title;
     @Column(columnDefinition = "LONGTEXT")
