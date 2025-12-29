@@ -1,6 +1,7 @@
 package com.back.shared.market.out;
 
 import com.back.global.exception.DomainException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import tools.jackson.databind.ObjectMapper;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
+@Slf4j
 @Service
 public class TossPaymentsService {
 

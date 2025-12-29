@@ -31,8 +31,6 @@ logging:
     org.hibernate.orm.jdbc.extract: TRACE
     org.springframework.transaction.interceptor: TRACE
 
-org.springframework.transaction.interceptor: TRACE
-
 custom:
   market:
     toss:
