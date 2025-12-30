@@ -17,14 +17,5 @@ public class CashMemberDto {
     private final String nickname;
     private final int activatyScore;
 
-    public CashMemberDto(CashMember member) {
-        this(
-                member.getId(),
-                member.getCreateDate(),
-                member.getModifyDate(),
-                member.getUsername(),
-                member.getNickname(),
-                member.getActivityScore()
-        );
-    }
+
 }
