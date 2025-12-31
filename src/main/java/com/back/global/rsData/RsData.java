@@ -1,6 +1,5 @@
 package com.back.global.rsData;
 
-import com.back.standard.modelType.CanGetModelTypeCode;
 import com.back.standard.resultType.ResultType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
